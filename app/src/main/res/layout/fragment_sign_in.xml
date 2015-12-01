@@ -1,0 +1,71 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="edu.cuc.stephen.signincourse.SignInFragment">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent" android:layout_height="match_parent">
+
+
+        <Button
+            android:id="@+id/button_get_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/get_image"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="10dp"/>
+
+        <Button
+            android:id="@+id/button_open_camera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="摄像头"
+            android:layout_toLeftOf="@id/button_get_image"
+            android:layout_alignParentBottom="true"
+            android:layout_alignTop="@id/button_get_image"/>
+        <TextView
+            android:id="@+id/tv_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="10dp"
+            android:layout_alignTop="@id/button_get_image"
+            android:layout_toLeftOf="@id/button_open_camera"
+            android:gravity="center"/>
+
+        <ImageView
+            android:id="@+id/iv_picture"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_above="@id/button_get_image"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/baby"/>
+
+        <FrameLayout
+            android:id="@+id/fl_waiting"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:clickable="true">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:id="@+id/tv_age_and_gender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                android:textSize="24sp"
+                android:textColor="#ffff00ff"
+                android:gravity="center"
+                android:text="22"/>
+        </FrameLayout>
+
+    </RelativeLayout>
+
+</FrameLayout>
