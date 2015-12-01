@@ -41,12 +41,20 @@
             android:layout_toRightOf="@id/tv_name_label"/>
 
         <TextView
-            android:id="@+id/tv_class_label"
+            android:id="@+id/tv_major_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_name_label"
-            android:text="@string/class_label"
+            android:text="@string/major_label"
             android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/tv_major_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_alignTop="@id/tv_major_label"
+            android:layout_toRightOf="@id/tv_major_label"/>
 
         <ImageView
             android:id="@+id/iv_sex"
@@ -76,7 +84,7 @@
             android:id="@+id/iv_photo"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_below="@id/tv_class_label"
+            android:layout_below="@id/tv_major_label"
             android:layout_above="@id/tv_status_label"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"

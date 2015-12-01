@@ -1,11 +1,19 @@
 package edu.cuc.stephen.signincourse;
 
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+
+import java.security.acl.Group;
+
+import static edu.cuc.stephen.signincourse.R.id.radio_group;
 
 
 /**
@@ -23,7 +31,29 @@ public class SettingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_setting, container, false);
+        View view = inflater.inflate(R.layout.fragment_setting, container, false);
+        RadioGroup radioGroup = (RadioGroup) view.findViewById(R.id.radio_group);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        String dbName = preferences.getString("course", "eda");
+        if (dbName.equals("eda"))
+            ((RadioButton)view.findViewById(R.id.radio_button_eda)).setChecked(true);
+        else if(dbName.equals("mcu"))
+            ((RadioButton)view.findViewById(R.id.radio_button_mcu)).setChecked(true);
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+                SharedPreferences.Editor editor = preferences.edit();
+                if(R.id.radio_button_eda == checkedId){
+                    editor.putString("course", "eda");
+                    editor.commit();
+                }else if(R.id.radio_button_mcu == checkedId){
+                    editor.putString("course", "mcu");
+                    editor.commit();
+                }
+            }
+        });
+        return view;
     }
 
 

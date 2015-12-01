@@ -1,4 +1,4 @@
-package edu.cuc.stephen.signincourse;
+package edu.cuc.stephen.signincourse.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -13,6 +13,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.Map;
+
+import edu.cuc.stephen.signincourse.R;
 
 /**
  * This is a Assets Database Manager
@@ -49,7 +51,6 @@ public class AssetsDatabaseManager {
 
     // Singleton Pattern
     private static AssetsDatabaseManager instance = null;
-    private OutputStream outputStream;
 
     public AssetsDatabaseManager(Context context) {
         this.context = context;
@@ -109,7 +110,7 @@ public class AssetsDatabaseManager {
         InputStream inputStream = null;
         OutputStream outputStream = null;
         try {
-            AssetManager manager = context.getAssets();
+            AssetManager manager = context.getResources().getAssets();
             inputStream = manager.open(assetsSource);
             outputStream = new FileOutputStream(destination);
             byte[] buffer = new byte[1024];
@@ -133,8 +134,9 @@ public class AssetsDatabaseManager {
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
+            return false;
         }
-        return false;
+        return true;
     }
 
     private String getDatabaseFile(String dbFile) {

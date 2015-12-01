@@ -9,6 +9,8 @@ import android.support.v4.view.ViewPager;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.cuc.stephen.signincourse.utils.AssetsDatabaseManager;
+
 public class MainActivity extends FragmentActivity {
 
     private ViewPager viewPager;
@@ -20,9 +22,14 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        AssetsDatabaseManager.initManager(getApplication());
         SignInFragment signInFragment = new SignInFragment();
         viewPager = (ViewPager) findViewById(R.id.view_pager);
+        BrowseStudents browseStudentsFragment = new BrowseStudents();
+        SettingFragment settingFragment = new SettingFragment();
+        tabs.add(browseStudentsFragment);
         tabs.add(signInFragment);
+        tabs.add(settingFragment);
         adapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public android.support.v4.app.Fragment getItem(int position) {
