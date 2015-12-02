@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,4 +62,13 @@ public class MainActivity extends FragmentActivity {
         viewPager.setCurrentItem(0);
     }
 
+    public void clearDatabase(View view) {
+        if(R.id.button_delete_database == view.getId()) {
+            AssetsDatabaseManager.deleteAllDatabase();
+        }
+    }
+
+    public void openCamera(View view) {
+        viewPager.setCurrentItem(1);
+    }
 }

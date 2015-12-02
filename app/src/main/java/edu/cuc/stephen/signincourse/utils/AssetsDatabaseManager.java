@@ -166,4 +166,24 @@ public class AssetsDatabaseManager {
             instance.databases.clear();
         }
     }
+
+    public static void deleteAllDatabase(){
+        closeAllDatabase();
+        String path = instance.getDatabaseFilePath();
+        File pathFile = new File(path);
+        File files[] = pathFile.listFiles();
+        if(files != null){
+            for (File f : files){
+                if (f.isFile()){
+                    if (f.exists()){
+                        try {
+                            f.delete();
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

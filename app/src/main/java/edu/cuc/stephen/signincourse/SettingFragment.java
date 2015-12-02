@@ -13,6 +13,8 @@ import android.widget.RadioGroup;
 
 import java.security.acl.Group;
 
+import edu.cuc.stephen.signincourse.utils.AssetsDatabaseManager;
+
 import static edu.cuc.stephen.signincourse.R.id.radio_group;
 
 
@@ -39,6 +41,8 @@ public class SettingFragment extends Fragment {
             ((RadioButton)view.findViewById(R.id.radio_button_eda)).setChecked(true);
         else if(dbName.equals("mcu"))
             ((RadioButton)view.findViewById(R.id.radio_button_mcu)).setChecked(true);
+        else if(dbName.equals("ee2014"))
+            ((RadioButton)view.findViewById(R.id.radio_button_2014ee)).setChecked(true);
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -50,11 +54,12 @@ public class SettingFragment extends Fragment {
                 }else if(R.id.radio_button_mcu == checkedId){
                     editor.putString("course", "mcu");
                     editor.commit();
+                }else if(R.id.radio_button_2014ee == checkedId){
+                    editor.putString("course", "ee2014");
+                    editor.commit();
                 }
             }
         });
         return view;
     }
-
-
 }

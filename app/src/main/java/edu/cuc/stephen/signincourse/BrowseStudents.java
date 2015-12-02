@@ -60,7 +60,6 @@ public class BrowseStudents extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_browse_students, container, false);
 
-        pathPhotos = findStudentsPhotos();
         Toast.makeText(getActivity(), pathPhotos, Toast.LENGTH_LONG).show();
         databaseManager = AssetsDatabaseManager.getManager();
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
@@ -88,9 +87,9 @@ public class BrowseStudents extends Fragment {
 
             @Override
             public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-                if (e1.getY() - e2.getY() > 50) {
+                if (e1.getY() - e2.getY() > 30) {
                     readRecordAndToView(true);
-                }else if( e2.getY() - e1.getY() > 50) {
+                }else if( e2.getY() - e1.getY() > 30) {
                     readRecordAndToView(false);
                 }
                 return super.onFling(e1, e2, velocityX, velocityY);
@@ -119,7 +118,11 @@ public class BrowseStudents extends Fragment {
                 continue;
             String pathFolder = parentFile.toString();
             pathFolder = pathFolder.substring(pathFolder.lastIndexOf("/") + 1);
-            if (!"eda_mcu_photos".equals(pathFolder))
+            String pathName = "eda_mcu_photos";
+            if ("ee2014.db".equals(databaseName)){
+                pathName = "ee2014";
+            }
+            if (!pathName.equals(pathFolder))
                 continue;
             return parentFile.getAbsolutePath().toString();
         }
@@ -167,7 +170,7 @@ public class BrowseStudents extends Fragment {
     private void checkDatabaseName() {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         String dbName = preferences.getString("course", "eda");
-        if (dbName == null)
+        if (dbName == null || dbName.equals(""))
             dbName = "eda";
         dbName = dbName + ".db";
         if (!dbName.equals(databaseName)){
@@ -184,5 +187,6 @@ public class BrowseStudents extends Fragment {
         database = databaseManager.getDatabase(databaseName);
         String querySQL = "select * from " + tableName;
         cursor = database.rawQuery(querySQL, null);
+        pathPhotos = findStudentsPhotos();
     }
 }

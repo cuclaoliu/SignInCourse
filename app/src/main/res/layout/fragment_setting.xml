@@ -1,5 +1,6 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="edu.cuc.stephen.signincourse.SettingFragment">
 
@@ -8,33 +9,50 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="课程选择"
-        android:textSize="32sp"/>
-    <RadioGroup
-        android:id="@+id/radio_group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <RadioButton
-            android:id="@+id/radio_button_eda"
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="电子设计自动化"
-            android:textSize="32sp"
-            android:layout_margin="16dp"/>
+            android:text="课程选择"
+            android:textSize="32sp" />
 
-        <RadioButton
-            android:id="@+id/radio_button_mcu"
+        <RadioGroup
+            android:id="@+id/radio_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/radio_button_eda"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="电子设计自动化"
+                android:textSize="32sp" />
+
+            <RadioButton
+                android:id="@+id/radio_button_mcu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="单片机原理"
+                android:textSize="32sp" />
+
+            <RadioButton
+                android:id="@+id/radio_button_2014ee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="2014电信"
+                android:textSize="32sp" />
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/button_delete_database"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="单片机原理"
+            android:text="清除数据库"
             android:textSize="32sp"
-            android:layout_margin="16dp"/>
-
-    </RadioGroup>
-
+            android:layout_margin="16dp"
+            android:onClick="clearDatabase"/>
     </LinearLayout>
 </FrameLayout>
